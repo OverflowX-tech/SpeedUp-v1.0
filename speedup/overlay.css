@@ -1,0 +1,33 @@
+/* ─── SpeedUp On-Screen Overlay ─── */
+
+#speedup-overlay {
+  position: fixed;
+  top: 28px;
+  left: 28px;
+  z-index: 2147483647;
+  pointer-events: none;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(99, 51, 255, 0.88), rgba(168, 51, 255, 0.82));
+  padding: 8px 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(99, 51, 255, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  transform: translateY(-8px) scale(0.92);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+#speedup-overlay.speedup-overlay-show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+#speedup-overlay.speedup-overlay-hide {
+  opacity: 0;
+  transform: translateY(-8px) scale(0.92);
+}

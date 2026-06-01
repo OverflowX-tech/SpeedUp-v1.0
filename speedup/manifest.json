@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "SpeedUp — Video Speed Controller",
+  "version": "1.0.0",
+  "description": "Control any HTML5 video speed beyond 2x. Supports 3x, 4x, 5x, up to 16x on YouTube, Coursera, Udemy, and more.",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "icons": {
+    "16": "icons/icon16.svg",
+    "48": "icons/icon48.svg",
+    "128": "icons/icon128.svg"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.svg",
+      "48": "icons/icon48.svg",
+      "128": "icons/icon128.svg"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["overlay.css"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "commands": {
+    "speed-up": {
+      "suggested_key": {
+        "default": "Alt+Period"
+      },
+      "description": "Increase playback speed"
+    },
+    "speed-down": {
+      "suggested_key": {
+        "default": "Alt+Comma"
+      },
+      "description": "Decrease playback speed"
+    },
+    "speed-reset": {
+      "suggested_key": {
+        "default": "Alt+0"
+      },
+      "description": "Reset to 1x speed"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
